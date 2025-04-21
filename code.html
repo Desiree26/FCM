@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Gamificado: Devolución Impuestos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Para iconos -->
+</head>
+<body>
+    <div class="quiz-container">
+        <h1><i class="fas fa-scroll"></i> Quiz: Decreto Devolución de Impuestos</h1>
+        <p class="instructions">
+            Selecciona la respuesta correcta. ¡Solo puedes avanzar si aciertas!
+            <br> Cada intento cuenta para tu puntuación final.
+        </p>
+        <div class="stats-bar">
+            <span id="question-counter">Pregunta: 1 / 11</span>
+            <span id="attempts-counter">Intentos Totales: 0</span>
+        </div>
+
+        <div class="card-grid">
+            <!-- Las tarjetas se generan igual, pero se añadirán clases 'locked' o 'active' con JS -->
+            <!-- Ejemplo de una tarjeta (las demás siguen la misma estructura) -->
+            <!-- Pregunta 1 -->
+            <div class="card-container" data-question-id="1" data-correct-option="b" data-justification="Establecer el mecanismo para la devolución del impuesto general de importación pagado por la importación de mercancías o insumos incorporados a mercancías de exportación, o de mercancías que se retornen al extranjero." data-attempts="0">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <div class="question-header">
+                            <span class="question-number">1</span>
+                            <p class="question-text">¿Cuál es el principal objetivo del decreto?</p>
+                        </div>
+                        <div class="options-list">
+                            <div class="option-item" data-option="a"><span class="option-letter">a)</span> Establecer impuestos a las exportaciones.</div>
+                            <div class="option-item" data-option="b"><span class="option-letter">b)</span> Establecer el mecanismo para la devolución del impuesto general de importación...</div>
+                            <div class="option-item" data-option="c"><span class="option-letter">c)</span> Regular la importación de materias primas.</div>
+                            <div class="option-item" data-option="d"><span class="option-letter">d)</span> Promover la inversión extranjera.</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="feedback-icon"></div>
+                        <p class="justification-title"></p> <!-- Se llena dinámicamente -->
+                        <p class="justification"></p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Pregunta 2 -->
+            <div class="card-container" data-question-id="2" data-correct-option="b" data-justification="Las personas morales que realicen exportaciones definitivas de mercancías." data-attempts="0">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">2</span>
+                            <p class="question-text">¿Quiénes pueden obtener la devolución del impuesto general de importación según este decreto?</p>
+                        </div>
+                         <div class="options-list">
+                            <div class="option-item" data-option="a"><span class="option-letter">a)</span> Todas las personas físicas y morales...</div>
+                            <div class="option-item" data-option="b"><span class="option-letter">b)</span> Las personas morales que realicen exportaciones definitivas...</div>
+                            <div class="option-item" data-option="c"><span class="option-letter">c)</span> Únicamente las empresas con capital extranjero.</div>
+                            <div class="option-item" data-option="d"><span class="option-letter">d)</span> Solo las micro y pequeñas empresas exportadoras.</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                        <p class="justification"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="card-container" data-question-id="3" data-correct-option="c" data-justification="Mercancías que se retornen en el mismo estado sin haberse sometido a ningún proceso de elaboración, transformación o reparación..." data-attempts="0">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <div class="question-header">
+                            <span class="question-number">3</span>
+                            <p class="question-text">¿Qué tipo de mercancías importadas pueden ser elegibles para la devolución si se exportan en la misma condición?</p>
+                        </div>
+                        <div class="options-list">
+                            <div class="option-item" data-option="a"><span class="option-letter">a)</span> Cualquier mercancía importada, sin excepciones.</div>
+                            <div class="option-item" data-option="b"><span class="option-letter">b)</span> Mercancías que hayan sido sometidas a procesos...</div>
+                            <div class="option-item" data-option="c"><span class="option-letter">c)</span> Mercancías que se retornen en el mismo estado...</div>
+                            <div class="option-item" data-option="d"><span class="option-letter">d)</span> Mercancías perecederas.</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                        <p class="justification"></p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Pregunta 4 -->
+            <div class="card-container" data-question-id="4" data-correct-option="c" data-justification="La limpieza, incluyendo la remoción de óxido, grasa o pintura." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">4</span>
+                             <p class="question-text">¿Cuál operación NO altera materialmente las características de una mercancía exportada en la misma condición?</p>
+                        </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> Su transformación en un producto diferente.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> La incorporación de nuevos componentes.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> La limpieza, incluyendo la remoción de óxido...</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> La fabricación de partes a partir de la mercancía...</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Pregunta 5 -->
+            <div class="card-container" data-question-id="5" data-correct-option="b" data-justification="Cuando se incorporan a bienes exportados a los Estados Unidos de América o a Canadá." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">5</span>
+                             <p class="question-text">¿Cuándo se devuelve el impuesto por insumos originarios de América del Norte?</p>
+                        </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> Cuando se incorporan a bienes exportados a cualquier país.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> Cuando se incorporan a bienes exportados a EE.UU. o Canadá.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> Cuando se exportan los insumos sin ser incorporados...</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> En ningún caso, ya que son originarios.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Pregunta 6 -->
+            <div class="card-container" data-question-id="6" data-correct-option="c" data-justification="La solicitud correspondiente en los formatos que se expidan y copia de la documentación que ampare las mercancías..." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                         <div class="question-header">
+                            <span class="question-number">6</span>
+                            <p class="question-text">¿Qué deben presentar los exportadores ante la Secretaría de Economía para obtener la devolución?</p>
+                         </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> Únicamente el pedimento de exportación.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> Solo el pedimento de importación.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> La solicitud correspondiente en los formatos...</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> Un permiso especial de la SHCP.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+              <!-- Pregunta 7 -->
+            <div class="card-container" data-question-id="7" data-correct-option="b" data-justification="Noventa días hábiles." data-attempts="0">
+                  <div class="card">
+                      <div class="card-face card-front">
+                          <div class="question-header">
+                            <span class="question-number">7</span>
+                            <p class="question-text">¿Plazo máximo para presentar la solicitud de devolución después de la exportación?</p>
+                          </div>
+                          <div class="options-list">
+                              <div class="option-item" data-option="a"><span class="option-letter">a)</span> 30 días hábiles.</div>
+                              <div class="option-item" data-option="b"><span class="option-letter">b)</span> Noventa días hábiles.</div>
+                              <div class="option-item" data-option="c"><span class="option-letter">c)</span> Seis meses.</div>
+                              <div class="option-item" data-option="d"><span class="option-letter">d)</span> Un año.</div>
+                          </div>
+                      </div>
+                      <div class="card-face card-back">
+                          <div class="feedback-icon"></div>
+                          <p class="justification-title"></p>
+                          <p class="justification"></p>
+                      </div>
+                  </div>
+              </div>
+
+             <!-- Pregunta 8 -->
+            <div class="card-container" data-question-id="8" data-correct-option="b" data-justification="10 días hábiles contados a partir de su recepción." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">8</span>
+                             <p class="question-text">¿Plazo de la Secretaría de Economía para dictaminar sobre la solicitud?</p>
+                         </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> 5 días hábiles.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> 10 días hábiles contados a partir de su recepción.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> 20 días hábiles.</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> 30 días hábiles.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Pregunta 9 -->
+            <div class="card-container" data-question-id="9" data-correct-option="b" data-justification="La devolverá al exportador para que la presente nuevamente en un plazo de 30 días hábiles." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">9</span>
+                             <p class="question-text">Si la solicitud no cumple requisitos, ¿qué hará la Secretaría de Economía?</p>
+                        </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> La rechazará directamente.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> La devolverá al exportador para que la presente...</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> Iniciará una investigación.</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> Otorgará un plazo adicional de hasta 60 días.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Pregunta 10 -->
+            <div class="card-container" data-question-id="10" data-correct-option="c" data-justification="Debe reintegrar a la SHCP el monto del impuesto devuelto en un plazo no mayor de 15 días hábiles." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">10</span>
+                             <p class="question-text">Si se devuelve el impuesto y luego las mercancías retornan, ¿qué obligación tiene el exportador?</p>
+                        </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> No tiene ninguna obligación.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> Debe notificar a la Secretaría de Economía.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> Debe reintegrar a la SHCP el monto del impuesto...</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> Debe pagar una multa.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Pregunta 11 -->
+            <div class="card-container" data-question-id="11" data-correct-option="d" data-justification="El 1o. de enero de 2001." data-attempts="0">
+                 <div class="card">
+                     <div class="card-face card-front">
+                        <div class="question-header">
+                             <span class="question-number">11</span>
+                             <p class="question-text">¿Desde cuándo entró en vigor la última reforma publicada mencionada?</p>
+                        </div>
+                         <div class="options-list">
+                             <div class="option-item" data-option="a"><span class="option-letter">a)</span> El 11 de mayo de 1995.</div>
+                             <div class="option-item" data-option="b"><span class="option-letter">b)</span> El 24 de abril de 1985.</div>
+                             <div class="option-item" data-option="c"><span class="option-letter">c)</span> El 29 de julio de 1987.</div>
+                             <div class="option-item" data-option="d"><span class="option-letter">d)</span> El 1o. de enero de 2001.</div>
+                         </div>
+                     </div>
+                     <div class="card-face card-back">
+                         <div class="feedback-icon"></div>
+                         <p class="justification-title"></p>
+                         <p class="justification"></p>
+                     </div>
+                 </div>
+             </div>
+
+            <!-- Fin de las tarjetas -->
+        </div> <!-- Fin card-grid -->
+
+        <!-- Contenedor para el resultado final (inicialmente oculto) -->
+        <div id="final-score-container" class="final-score hidden">
+            <h2>¡Quiz Completado!</h2>
+            <p id="final-score-summary">Respondiste X de Y preguntas correctamente.</p>
+            <p id="final-attempts">Intentos totales: Z</p>
+            <p id="final-classification">Clasificación: <span class="classification-badge"></span></p>
+            <button id="restart-button">Jugar de Nuevo</button>
+        </div>
+
+    </div> <!-- Fin quiz-container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
