@@ -1,0 +1,333 @@
+/* --- Reset Básico y Estilos Generales --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fondo más interesante */
+    background-color: #f4f7f6;
+    background-image: linear-gradient(135deg, #dde1e7 0%, #f4f7f6 100%);
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23bbb' fill-opacity='0.1' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.99-7.5L26 15v19L13 41.5 0 34V15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* Efecto cristal */
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2.3em;
+    font-weight: 600;
+}
+h1 i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.instructions {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 1.05em;
+}
+
+/* --- Barra de Estadísticas --- */
+.stats-bar {
+    background-color: #e9ecef;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+/* --- Grid para las Tarjetas --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Un poco más anchas */
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 40px; /* Espacio antes del score final */
+}
+
+/* --- Estructura 3D y Contenedor de Tarjeta --- */
+.card-container {
+    perspective: 1500px;
+    min-height: 380px; /* Aumentar altura mínima */
+    border-radius: 12px;
+    transition: opacity 0.5s ease, transform 0.3s ease; /* Transición para bloqueo */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Caras de la Tarjeta --- */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */ /* Distribuye espacio */
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Importante para contener texto */
+}
+
+/* --- Cara Frontal (Pregunta y Opciones) --- */
+.card-front {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    justify-content: flex-start; /* Alinear contenido arriba */
+}
+
+.question-header {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px 8px 0 0; /* Bordes redondeados arriba */
+    margin: -20px -20px 20px -20px; /* Extender al borde y añadir margen inferior */
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+    display: flex;
+    align-items: center; /* Centrar verticalmente número y texto */
+}
+
+.question-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* Centrar verticalmente */
+    text-align: center;
+    margin-right: 15px;
+    flex-shrink: 0; /* Evitar que se encoja */
+}
+
+.question-text {
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #343a40;
+    flex-grow: 1; /* Ocupar espacio restante */
+    text-align: left; /* Asegurar alineación izquierda */
+    margin: 0; /* Resetear margen por defecto de <p> */
+}
+
+.options-list {
+    width: 100%;
+    text-align: left;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-top: 15px; /* Espacio sobre las opciones */
+    padding: 0 5px; /* Padding lateral ligero */
+    max-height: calc(100% - 120px); /* Limitar altura, ajustar según header */
+    overflow-y: auto; /* Scroll si las opciones son muchas/largas */
+    flex-grow: 1; /* Ocupar espacio restante */
+}
+
+.option-item {
+    margin-bottom: 10px;
+    padding: 12px 15px; /* Más padding */
+    border-radius: 8px;
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    display: flex; /* Alinear letra y texto */
+    align-items: baseline; /* Alinear por la base del texto */
+}
+.option-item:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+.option-item:active {
+    transform: scale(0.98); /* Efecto de clic */
+}
+
+.option-letter {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #007bff;
+    min-width: 20px; /* Asegurar espacio para la letra */
+}
+
+/* --- Cara Trasera (Feedback) --- */
+.card-back {
+    background-color: #e0e0e0;
+    color: white;
+    transform: rotateY(180deg);
+    justify-content: center;
+    padding: 30px;
+}
+
+.card-back.correct {
+    background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%); /* Verde más vibrante */
+}
+.card-back.incorrect {
+    background: linear-gradient(135deg, #ef5350 0%, #e53935 100%); /* Rojo más vibrante */
+}
+
+.feedback-icon {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.justification-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+.justification {
+    font-size: 0.95em;
+    line-height: 1.5;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    text-align: left; /* Alinear justificación a la izquierda */
+}
+
+/* --- Estados de la Tarjeta (Locked, Active, Flipped, Correctly Answered) --- */
+.card-container.locked {
+    opacity: 0.5;
+    pointer-events: none; /* Deshabilitar clics */
+    /* transform: scale(0.98); */ /* Opcional: hacerlo más pequeño */
+}
+
+.card-container.active {
+    opacity: 1;
+    pointer-events: auto;
+     box-shadow: 0 0 15px rgba(52, 152, 219, 0.5); /* Resplandor azul */
+}
+
+.card-container.flipping .card { /* Evitar doble clic durante la animación */
+    pointer-events: none;
+}
+
+.card-container.flipped .card {
+    transform: rotateY(180deg);
+}
+
+/* Estilo para tarjetas ya respondidas correctamente (opcional) */
+.card-container.correctly-answered {
+     opacity: 0.7; /* Atenuar un poco */
+     /* border: 2px solid #4caf50; */ /* Borde verde */
+     pointer-events: none; /* No se puede volver a clickar */
+}
+
+
+/* --- Resultado Final --- */
+.final-score {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    border-top: 5px solid #3498db;
+}
+.final-score h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+.final-score p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+.final-score #final-classification {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.classification-badge {
+    padding: 5px 12px;
+    border-radius: 15px;
+    color: white;
+    font-size: 0.9em;
+    vertical-align: middle; /* Alinear con el texto */
+}
+.badge-experto { background-color: #2ecc71; } /* Verde */
+.badge-avanzado { background-color: #3498db; } /* Azul */
+.badge-aprendiz { background-color: #f39c12; } /* Naranja */
+.badge-novato { background-color: #e74c3c; } /* Rojo */
+
+#restart-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#restart-button:hover {
+    background-color: #2980b9;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Scrollbar personalizada (Opcional) --- */
+.options-list::-webkit-scrollbar,
+.justification::-webkit-scrollbar {
+    width: 6px;
+}
+.options-list::-webkit-scrollbar-track,
+.justification::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+.options-list::-webkit-scrollbar-thumb,
+.justification::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+.options-list::-webkit-scrollbar-thumb:hover,
+.justification::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
